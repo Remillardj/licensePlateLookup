@@ -18,8 +18,8 @@ div.well{
 }
 
 .Absolute-Center.is-Responsive {
-  width: 50%; 
-  height: 50%;
+  width: 40%; 
+  height: 20%;
   min-width: 200px;
   max-width: 400px;
   padding: 40px;
@@ -28,7 +28,23 @@ div.well{
 #logo-container{
   margin: auto;
   margin-bottom: 10px;
-  width:200px;
+  width:250px;
   height:30px;
   background-image:url('http://placehold.it/200x30/000000/ffffff/&text=BRAND+LOGO');
+}
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+:-ms-input-placeholder {  
+   text-align: center; 
 }

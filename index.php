@@ -1,3 +1,10 @@
+<?php
+
+include_once('etc/connect.php');
+$result = $db->query("SELECT * FROM dmv_wa WHERE license=$_POST['license']");
+
+?>
+
 <!DOCTYPE>
 <html lang="en">
 	<head>
@@ -46,12 +53,12 @@
 			<div class="container">
 				<div class="starter-template">
 					<h2>Washington State DMV-DOJ Joint Agency License Plate Database</h2>
-					<img src="img/wa-state-seal.jpg">
+					<img src="img/wa-state-seal.jpg" style="width:150px;height:150px;">
 				</div>
 				<div class="row">
 					<div class="Absolute-Center is-Responsive">
-						<div class="col-sm-12 col-md-10 col-md-offset-1">
-							<form action="" id="loginForm">
+						<div style="text-align:center;">
+							<form action="index.php" id="licPlate">
 								<div class="form-group input-group">
 									<input class="form-control" type="text" name='license' placeholder="License Plate"/>          
 								</div>
@@ -65,7 +72,9 @@
 			</div>
 		</div>
 	</body>
+
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-</html
+
+</html>
