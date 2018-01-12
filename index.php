@@ -1,10 +1,3 @@
-<?php
-
-include_once('etc/connect.php');
-$result = $db->query("SELECT * FROM dmv_wa WHERE license=$_POST['license']");
-
-?>
-
 <!DOCTYPE>
 <html lang="en">
 	<head>
@@ -56,14 +49,58 @@ $result = $db->query("SELECT * FROM dmv_wa WHERE license=$_POST['license']");
 					<img src="img/wa-state-seal.jpg" style="width:150px;height:150px;">
 				</div>
 				<div class="row">
-					<div class="Absolute-Center is-Responsive">
+<?php
+
+if (isset($_POST['licPlate'])) {
+	include('etc/connect.php');
+	$license = $_POST['licPlate'];
+	$sqlQuery = "SELECT * FROM `dmv_wa` WHERE lic_plate='$license'";
+	$result = mysqli_query($db, $sqlQuery);
+	if (!$result) {
+		printf("Error: %s\n", mysqli_error($db));
+		exit();
+	}
+	while ($result = mysqli_fetch_array($result)) {
+		echo "<table class=\"table table-hover\">
+		    <thead>
+		      <tr>
+		        <th>Firstname</th>
+		        <th>Lastname</th>
+		        <th>Car Make</th>
+		        <th>Car Model</td>
+		        <th>Car Year</th>
+		        <th>Street Address</th>
+		        <th>City</th>
+		        <th>License Plate</th>
+		        <th>VIN</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>".$result['first_name']."</td>
+		        <td>".$result['last_name']."</td>
+		        <td>".$result['car_make']."</td>
+		        <td>".$result['car_model']."</td>
+		        <td>".$result['car_year']."</td>
+		        <td>".$result['street_addr']."</td>
+		        <td>".$result['city']."</td>
+		        <td>".$result['lic_plate']."</td>
+		        <td>".$result['vin']."</td>
+		      </tr>
+		    </tbody>
+		  </table>";
+	}
+}
+
+?>
+					<div class="col-xs-2 col-center-block">
 						<div style="text-align:center;">
-							<form action="index.php" id="licPlate">
+							<form action="index.php" id="licPlate" method="POST">
 								<div class="form-group input-group">
-									<input class="form-control" type="text" name='license' placeholder="License Plate"/>          
+									<input class="form-control" type="text" name='licPlate' placeholder="License Plate"/>          
 								</div>
 								<div class="form-group">
-									<button type="button" class="btn btn-def btn-block">Lookup</button>
+									<input type="submit" value="Lookup" class="btn btn-def btn-block" />
 								</div>
 							</form>        
 						</div>  
@@ -71,6 +108,8 @@ $result = $db->query("SELECT * FROM dmv_wa WHERE license=$_POST['license']");
 				</div>
 			</div>
 		</div>
+</div>
+</div>
 	</body>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

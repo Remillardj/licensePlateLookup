@@ -1,6 +1,9 @@
 <?php
 
 $db = new mysqli("localhost", "root", "", "dmv_doj_wa_state");
-$result = $db->query("SELECT * FROM dmv_wa");
+
+if (mysqli_connect_errno()) {
+	echo "Failed to connect to database: " . mysqli_connect_errno();
+}
 
 ?>

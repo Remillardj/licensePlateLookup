@@ -25,26 +25,9 @@ div.well{
   padding: 40px;
 }
 
-#logo-container{
-  margin: auto;
-  margin-bottom: 10px;
-  width:250px;
-  height:30px;
-  background-image:url('http://placehold.it/200x30/000000/ffffff/&text=BRAND+LOGO');
-}
-
-::-webkit-input-placeholder {
-   text-align: center;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-   text-align: center;  
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-   text-align: center;  
-}
-
-:-ms-input-placeholder {  
-   text-align: center; 
+.col-center-block {
+    float: none;
+    display: block;
+    margin: 0 auto;
+    /* margin-left: auto; margin-right: auto; */
 }
